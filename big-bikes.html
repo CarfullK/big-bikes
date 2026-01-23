@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Big Bikes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #ff4d4d, #ff8c00, #ff4d4d);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .selector-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid #333;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #1e1e30, #252540);
+            color: #f5f5f5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff4d4d' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #ff4d4d;
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+        }
+
+        select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        select option {
+            background: #1a1a2e;
+            color: #f0f0f0;
+        }
+
+        .random-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff4d4d, #ff8c00);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .random-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.4);
+        }
+
+        .random-btn:active {
+            transform: translateY(0);
+        }
+
+        .bike-card {
+            background: linear-gradient(145deg, #1e1e30, #252540);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .bike-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bike-image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: #0a0a15;
+            overflow: hidden;
+        }
+
+        .bike-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bike-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 4rem;
+        }
+
+        .bike-placeholder small {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .image-source {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6cf;
+        }
+
+        .manufacturer-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #444;
+            z-index: 10;
+        }
+
+        .bike-info {
+            padding: 25px;
+        }
+
+        .bike-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff8c00;
+        }
+
+        .bike-tagline {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .spec-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+
+        .spec-label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.1), rgba(255, 140, 0, 0.1));
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 3px solid #ff4d4d;
+        }
+
+        .fun-fact-title {
+            font-size: 0.75rem;
+            color: #ff8c00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .fun-fact-text {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message p {
+            margin-bottom: 10px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: rgba(255, 140, 0, 0.2);
+            color: #ff8c00;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 2rem; }
+            .specs-grid { gap: 10px; }
+            .spec-item { padding: 12px; }
+            .spec-value { font-size: 1.1rem; }
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 40px; }
+            .container { max-width: 600px; }
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1rem; }
+            .selectors-row { display: flex; gap: 20px; }
+            .selectors-row .selector-group { flex: 1; }
+            .bike-image-container { height: 350px; }
+            .specs-grid { grid-template-columns: repeat(4, 1fr); }
+            .bike-name { font-size: 1.8rem; }
+            .random-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 77, 77, 0.5); }
+            select:hover { border-color: #ff4d4d; }
+        }
+
+        @media (min-width: 1024px) {
+            .container { max-width: 700px; }
+            .bike-image-container { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Big Bikes</h1>
+            <p class="subtitle">Legendary Machines</p>
+        </header>
+
+        <div class="selectors-row">
+            <div class="selector-group">
+                <label for="manufacturer">Manufacturer</label>
+                <select id="manufacturer">
+                    <option value="">-- Select Manufacturer --</option>
+                </select>
+            </div>
+
+            <div class="selector-group">
+                <label for="model">Model</label>
+                <select id="model" disabled>
+                    <option value="">-- Select Model --</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="random-btn" onclick="selectRandomBike()">Random Ride</button>
+
+        <div id="bike-display">
+            <div class="welcome-message">
+                <div class="welcome-icon">&#127981;</div>
+                <p>Select a manufacturer and model</p>
+                <p>or hit <strong>Random Ride</strong></p>
+                <p>to discover a legendary machine!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Using LoremFlickr for images (Flickr Creative Commons)
+        // Format: https://loremflickr.com/width/height/keyword1,keyword2
+        const bikeData = {
+            "Harley-Davidson": {
+                bikes: {
+                    "Road Glide Special": {
+                        keywords: "harley,davidson,touring",
+                        category: "Touring",
+                        tagline: "The shark-nosed king of the highway",
+                        engine: "1868cc",
+                        power: "93 HP",
+                        torque: "155 Nm",
+                        weight: "390 kg",
+                        funFact: "The Road Glide's frame-mounted fairing (nicknamed 'shark nose') provides more stable handling at speed than fork-mounted designs. Riders often clock 500+ mile days in complete comfort."
+                    },
+                    "Fat Boy": {
+                        keywords: "harley,fatboy,cruiser",
+                        category: "Cruiser",
+                        tagline: "The Terminator's ride of choice",
+                        engine: "1868cc",
+                        power: "93 HP",
+                        torque: "155 Nm",
+                        weight: "317 kg",
+                        funFact: "Made famous by Arnold Schwarzenegger in Terminator 2, the Fat Boy's name allegedly comes from the atomic bombs 'Fat Man' and 'Little Boy'. Those solid disc wheels aren't just for looks - they give it that unmistakable presence."
+                    },
+                    "Street Glide": {
+                        keywords: "harley,bagger,motorcycle",
+                        category: "Touring",
+                        tagline: "The hot rod bagger",
+                        engine: "1868cc",
+                        power: "93 HP",
+                        torque: "155 Nm",
+                        weight: "372 kg",
+                        funFact: "The Street Glide is the best-selling Harley-Davidson model. It's the go-to choice for riders who want touring capability with a more aggressive, slammed look."
+                    },
+                    "Sportster S": {
+                        keywords: "harley,sportster,motorcycle",
+                        category: "Sport",
+                        tagline: "Revolution reborn",
+                        engine: "1252cc",
+                        power: "121 HP",
+                        torque: "127 Nm",
+                        weight: "228 kg",
+                        funFact: "The Sportster S broke with 64 years of tradition by ditching the air-cooled V-twin for a water-cooled Revolution Max engine. Purists grumbled, but 121 HP speaks for itself!"
+                    }
+                }
+            },
+            "Ducati": {
+                bikes: {
+                    "Panigale V4": {
+                        keywords: "ducati,panigale,superbike",
+                        category: "Superbike",
+                        tagline: "MotoGP for the street",
+                        engine: "1103cc",
+                        power: "214 HP",
+                        torque: "124 Nm",
+                        weight: "175 kg",
+                        funFact: "The Panigale V4's engine is derived directly from Ducati's MotoGP Desmosedici. It counter-rotates the crankshaft to cancel gyroscopic effects, letting riders flick it into corners faster."
+                    },
+                    "Diavel V4": {
+                        keywords: "ducati,diavel,motorcycle",
+                        category: "Power Cruiser",
+                        tagline: "The Devil made me do it",
+                        engine: "1158cc",
+                        power: "168 HP",
+                        torque: "126 Nm",
+                        weight: "223 kg",
+                        funFact: "The name 'Diavel' comes from the Bolognese dialect word for 'Devil'. With 168 HP in a cruiser stance, it's basically a superbike that's pretending to be relaxed."
+                    },
+                    "Monster": {
+                        keywords: "ducati,monster,naked",
+                        category: "Naked",
+                        tagline: "The original naked bike",
+                        engine: "937cc",
+                        power: "111 HP",
+                        torque: "93 Nm",
+                        weight: "188 kg",
+                        funFact: "The Monster basically invented the naked bike category in 1993. Designer Miguel Galluzzi created it as a rebellion against fully-faired sportbikes - he wanted to show off that beautiful trellis frame."
+                    },
+                    "Multistrada V4": {
+                        keywords: "ducati,multistrada,adventure",
+                        category: "Adventure",
+                        tagline: "Four bikes in one",
+                        engine: "1158cc",
+                        power: "170 HP",
+                        torque: "125 Nm",
+                        weight: "218 kg",
+                        funFact: "The Multistrada was the first production motorcycle with front and rear radar for adaptive cruise control. It can genuinely do sport riding, touring, urban commuting, and light off-road - hence 'Multi-strada' (many roads)."
+                    }
+                }
+            },
+            "BMW": {
+                bikes: {
+                    "R 1250 GS Adventure": {
+                        keywords: "bmw,gs,adventure",
+                        category: "Adventure",
+                        tagline: "The undisputed adventure king",
+                        engine: "1254cc",
+                        power: "136 HP",
+                        torque: "143 Nm",
+                        weight: "268 kg",
+                        funFact: "The GS has won the Dakar Rally multiple times and is the best-selling large adventure bike ever. 'GS' stands for 'Gelande/Strasse' - German for 'off-road/road'. Ewan McGregor rode one around the world!"
+                    },
+                    "S 1000 RR": {
+                        keywords: "bmw,s1000rr,superbike",
+                        category: "Superbike",
+                        tagline: "German precision meets insanity",
+                        engine: "999cc",
+                        power: "205 HP",
+                        torque: "113 Nm",
+                        weight: "197 kg",
+                        funFact: "When BMW released the S 1000 RR in 2009, the Japanese manufacturers panicked - BMW had no superbike heritage but immediately matched their best. The asymmetric headlights were controversial but unforgettable."
+                    },
+                    "R 18": {
+                        keywords: "bmw,r18,cruiser",
+                        category: "Cruiser",
+                        tagline: "The biggest boxer ever built",
+                        engine: "1802cc",
+                        power: "91 HP",
+                        torque: "158 Nm",
+                        weight: "345 kg",
+                        funFact: "The R 18's 1,802cc engine is the largest boxer twin BMW has ever made. Those massive cylinders sticking out each side are fully exposed - BMW wanted maximum 'engine jewelry' effect."
+                    },
+                    "K 1600 GTL": {
+                        keywords: "bmw,k1600,touring",
+                        category: "Touring",
+                        tagline: "The six-cylinder luxury liner",
+                        engine: "1649cc",
+                        power: "160 HP",
+                        torque: "175 Nm",
+                        weight: "348 kg",
+                        funFact: "The K 1600's inline-six is the narrowest six-cylinder engine ever put in a motorcycle. It's so smooth that BMW had to add a sound enhancer so riders could actually hear the engine!"
+                    }
+                }
+            },
+            "Kawasaki": {
+                bikes: {
+                    "Ninja H2": {
+                        keywords: "kawasaki,ninja,superbike",
+                        category: "Superbike",
+                        tagline: "Supercharged madness",
+                        engine: "998cc",
+                        power: "228 HP",
+                        torque: "141 Nm",
+                        weight: "238 kg",
+                        funFact: "The H2 is the only production supercharged sportbike. Kawasaki's aerospace division designed the centrifugal supercharger, which spins at 130,000 RPM. The H2R (track-only) makes 310 HP!"
+                    },
+                    "Z900RS": {
+                        keywords: "kawasaki,z900,retro",
+                        category: "Retro",
+                        tagline: "The Z1 reborn",
+                        engine: "948cc",
+                        power: "111 HP",
+                        torque: "98 Nm",
+                        weight: "215 kg",
+                        funFact: "The Z900RS is a tribute to the legendary 1972 Z1, which was the first Japanese 900cc four-cylinder superbike and basically started the superbike wars. The RS nails that retro look with modern reliability."
+                    },
+                    "Ninja ZX-10R": {
+                        keywords: "kawasaki,zx10r,sportbike",
+                        category: "Superbike",
+                        tagline: "Six-time WorldSBK champion",
+                        engine: "998cc",
+                        power: "203 HP",
+                        torque: "114 Nm",
+                        weight: "207 kg",
+                        funFact: "Jonathan Rea won six consecutive World Superbike Championships on the ZX-10R from 2015-2020. The electronics package is race-developed and the engine uses Formula 1-style finger-follower valve actuation."
+                    },
+                    "Versys 1000": {
+                        keywords: "kawasaki,versys,adventure",
+                        category: "Adventure Sport",
+                        tagline: "The versatile all-rounder",
+                        engine: "1043cc",
+                        power: "120 HP",
+                        torque: "102 Nm",
+                        weight: "257 kg",
+                        funFact: "The Versys name combines 'versatile' and 'system'. It uses a detuned version of the Ninja 1000's engine, giving it sports bike performance with upright comfort."
+                    }
+                }
+            },
+            "Triumph": {
+                bikes: {
+                    "Rocket 3": {
+                        keywords: "triumph,rocket,motorcycle",
+                        category: "Muscle",
+                        tagline: "The world's largest production engine",
+                        engine: "2458cc",
+                        power: "165 HP",
+                        torque: "221 Nm",
+                        weight: "291 kg",
+                        funFact: "At 2,458cc, the Rocket 3 has the largest engine of any production motorcycle - bigger than many car engines! That 221 Nm of torque is more than a Porsche 911."
+                    },
+                    "Speed Triple 1200 RS": {
+                        keywords: "triumph,speed,triple",
+                        category: "Naked",
+                        tagline: "The hooligan's choice",
+                        engine: "1160cc",
+                        power: "178 HP",
+                        torque: "125 Nm",
+                        weight: "198 kg",
+                        funFact: "The Speed Triple's twin bug-eye headlights became so iconic that Triumph kept them through multiple generations. It's been the weapon of choice for stunt riders since 1994."
+                    },
+                    "Tiger 1200 Rally": {
+                        keywords: "triumph,tiger,adventure",
+                        category: "Adventure",
+                        tagline: "The GS hunter",
+                        engine: "1160cc",
+                        power: "148 HP",
+                        torque: "130 Nm",
+                        weight: "240 kg",
+                        funFact: "Triumph redesigned the Tiger 1200 specifically to dethrone the BMW GS. They shed 25kg and made it the lightest bike in its class."
+                    },
+                    "Bonneville T120": {
+                        keywords: "triumph,bonneville,classic",
+                        category: "Classic",
+                        tagline: "The original British icon",
+                        engine: "1200cc",
+                        power: "80 HP",
+                        torque: "105 Nm",
+                        weight: "236 kg",
+                        funFact: "Named after the Bonneville Salt Flats where Triumph set land speed records in 1956. Steve McQueen, Bob Dylan, and Marlon Brando all rode Bonnevilles."
+                    }
+                }
+            },
+            "Indian": {
+                bikes: {
+                    "Chieftain Dark Horse": {
+                        keywords: "indian,chieftain,bagger",
+                        category: "Bagger",
+                        tagline: "Blacked-out American muscle",
+                        engine: "1890cc",
+                        power: "93 HP",
+                        torque: "161 Nm",
+                        weight: "375 kg",
+                        funFact: "Indian Motorcycle is actually America's first motorcycle company, founded in 1901 (two years before Harley)."
+                    },
+                    "Scout Bobber": {
+                        keywords: "indian,scout,bobber",
+                        category: "Bobber",
+                        tagline: "Stripped-down street fighter",
+                        engine: "1133cc",
+                        power: "100 HP",
+                        torque: "97 Nm",
+                        weight: "252 kg",
+                        funFact: "The Scout name goes back to 1920, and those original Scouts were the sports bikes of their era."
+                    },
+                    "Challenger": {
+                        keywords: "indian,challenger,touring",
+                        category: "Bagger",
+                        tagline: "The PowerPlus beast",
+                        engine: "1768cc",
+                        power: "122 HP",
+                        torque: "178 Nm",
+                        weight: "373 kg",
+                        funFact: "Indian developed the liquid-cooled PowerPlus V-twin specifically to out-muscle the Harley Milwaukee-Eight. With 122 HP, it's one of the most powerful American baggers ever made."
+                    },
+                    "FTR 1200": {
+                        keywords: "indian,ftr,motorcycle",
+                        category: "Flat Track",
+                        tagline: "Dirt track DNA for the street",
+                        engine: "1203cc",
+                        power: "120 HP",
+                        torque: "115 Nm",
+                        weight: "226 kg",
+                        funFact: "The FTR is based on Indian's championship-winning flat track racers. Flat track racing is huge in America - riders powerslide at 100+ mph with no brakes!"
+                    }
+                }
+            },
+            "Honda": {
+                bikes: {
+                    "Gold Wing": {
+                        keywords: "honda,goldwing,touring",
+                        category: "Touring",
+                        tagline: "The ultimate touring machine",
+                        engine: "1833cc",
+                        power: "126 HP",
+                        torque: "170 Nm",
+                        weight: "367 kg",
+                        funFact: "The Gold Wing has been the touring bike benchmark since 1975. Some owners have clocked over 500,000 miles on a single Gold Wing!"
+                    },
+                    "CBR1000RR-R Fireblade": {
+                        keywords: "honda,cbr,fireblade",
+                        category: "Superbike",
+                        tagline: "HRC race tech unleashed",
+                        engine: "999cc",
+                        power: "217 HP",
+                        torque: "113 Nm",
+                        weight: "201 kg",
+                        funFact: "The extra 'R' in the name means Honda Racing Corporation (HRC) was directly involved in development."
+                    },
+                    "Africa Twin": {
+                        keywords: "honda,africa,twin",
+                        category: "Adventure",
+                        tagline: "Dakar legend reborn",
+                        engine: "1084cc",
+                        power: "101 HP",
+                        torque: "105 Nm",
+                        weight: "226 kg",
+                        funFact: "The original Africa Twin won the Paris-Dakar Rally four times in the late '80s."
+                    },
+                    "CB1000R": {
+                        keywords: "honda,cb1000r,naked",
+                        category: "Naked",
+                        tagline: "Neo Sports Cafe style",
+                        engine: "998cc",
+                        power: "143 HP",
+                        torque: "104 Nm",
+                        weight: "213 kg",
+                        funFact: "Honda coined 'Neo Sports Cafe' to describe the CB1000R's design philosophy - a modern reinterpretation of the original CB750."
+                    }
+                }
+            },
+            "Suzuki": {
+                bikes: {
+                    "Hayabusa": {
+                        keywords: "suzuki,hayabusa,sportbike",
+                        category: "Sport Tourer",
+                        tagline: "The legendary peregrine falcon",
+                        engine: "1340cc",
+                        power: "188 HP",
+                        torque: "150 Nm",
+                        weight: "264 kg",
+                        funFact: "Named after the Japanese peregrine falcon, the original 1999 Hayabusa was the first production bike to break 300 km/h."
+                    },
+                    "GSX-R1000R": {
+                        keywords: "suzuki,gsxr,superbike",
+                        category: "Superbike",
+                        tagline: "The original Gixxer",
+                        engine: "999cc",
+                        power: "202 HP",
+                        torque: "117 Nm",
+                        weight: "203 kg",
+                        funFact: "The GSX-R series basically defined the modern superbike when the GSX-R750 launched in 1985. The nickname 'Gixxer' comes from riders slurring 'GSX-R'."
+                    },
+                    "V-Strom 1050": {
+                        keywords: "suzuki,vstrom,adventure",
+                        category: "Adventure",
+                        tagline: "The underrated adventurer",
+                        engine: "1037cc",
+                        power: "107 HP",
+                        torque: "100 Nm",
+                        weight: "247 kg",
+                        funFact: "The V-Strom uses a version of the legendary TL1000S V-twin engine - one of the most characterful motors ever made."
+                    },
+                    "Katana": {
+                        keywords: "suzuki,katana,motorcycle",
+                        category: "Sport",
+                        tagline: "The samurai sword returns",
+                        engine: "999cc",
+                        power: "150 HP",
+                        torque: "105 Nm",
+                        weight: "215 kg",
+                        funFact: "The original 1981 Katana was designed by Hans Muth and was so radical it was initially banned in Japan!"
+                    }
+                }
+            }
+        };
+
+        const manufacturerSelect = document.getElementById('manufacturer');
+        const modelSelect = document.getElementById('model');
+        const bikeDisplay = document.getElementById('bike-display');
+
+        Object.keys(bikeData).sort().forEach(manufacturer => {
+            const option = document.createElement('option');
+            option.value = manufacturer;
+            option.textContent = manufacturer;
+            manufacturerSelect.appendChild(option);
+        });
+
+        manufacturerSelect.addEventListener('change', function() {
+            const manufacturer = this.value;
+            modelSelect.innerHTML = '<option value="">-- Select Model --</option>';
+            if (manufacturer) {
+                modelSelect.disabled = false;
+                Object.keys(bikeData[manufacturer].bikes).sort().forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            } else {
+                modelSelect.disabled = true;
+                showWelcome();
+            }
+        });
+
+        modelSelect.addEventListener('change', function() {
+            const manufacturer = manufacturerSelect.value;
+            const model = this.value;
+            if (manufacturer && model) {
+                displayBike(manufacturer, model);
+            } else {
+                showWelcome();
+            }
+        });
+
+        function displayBike(manufacturer, model) {
+            const bike = bikeData[manufacturer].bikes[model];
+            // Use LoremFlickr with keywords and a lock parameter for consistent images
+            const imageUrl = `https://loremflickr.com/800/500/${bike.keywords}?lock=${encodeURIComponent(manufacturer + model)}`;
+
+            bikeDisplay.innerHTML = `
+                <div class="bike-card" id="bike-card">
+                    <div class="bike-image-container">
+                        <span class="manufacturer-badge">${manufacturer}</span>
+                        <img src="${imageUrl}" alt="${model}" class="bike-image"
+                             onerror="this.onerror=null; this.src='https://loremflickr.com/800/500/motorcycle?lock=${encodeURIComponent(model)}'">
+                        <span class="image-source">Flickr CC</span>
+                    </div>
+                    <div class="bike-info">
+                        <span class="category-tag">${bike.category}</span>
+                        <h2 class="bike-name">${model}</h2>
+                        <p class="bike-tagline">${bike.tagline}</p>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-value">${bike.engine}</div>
+                                <div class="spec-label">Engine</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">${bike.power}</div>
+                                <div class="spec-label">Power</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">${bike.torque}</div>
+                                <div class="spec-label">Torque</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">${bike.weight}</div>
+                                <div class="spec-label">Weight</div>
+                            </div>
+                        </div>
+                        <div class="fun-fact">
+                            <div class="fun-fact-title">&#128293; Did You Know?</div>
+                            <p class="fun-fact-text">${bike.funFact}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => document.getElementById('bike-card').classList.add('visible'), 50);
+        }
+
+        function showWelcome() {
+            bikeDisplay.innerHTML = `
+                <div class="welcome-message">
+                    <div class="welcome-icon">&#127981;</div>
+                    <p>Select a manufacturer and model</p>
+                    <p>or hit <strong>Random Ride</strong></p>
+                    <p>to discover a legendary machine!</p>
+                </div>
+            `;
+        }
+
+        function selectRandomBike() {
+            const manufacturers = Object.keys(bikeData);
+            const randomMfr = manufacturers[Math.floor(Math.random() * manufacturers.length)];
+            const models = Object.keys(bikeData[randomMfr].bikes);
+            const randomModel = models[Math.floor(Math.random() * models.length)];
+            manufacturerSelect.value = randomMfr;
+            manufacturerSelect.dispatchEvent(new Event('change'));
+            setTimeout(() => {
+                modelSelect.value = randomModel;
+                displayBike(randomMfr, randomModel);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
