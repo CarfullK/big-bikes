@@ -98,9 +98,19 @@
             color: #f0f0f0;
         }
 
-        select.special-bike {
+        select.keith-bike {
             color: #c45baa !important;
             -webkit-text-fill-color: #c45baa !important;
+        }
+
+        select.rob-bike {
+            color: #4dbbc4 !important;
+            -webkit-text-fill-color: #4dbbc4 !important;
+        }
+
+        select.joolz-bike {
+            color: #c4a34d !important;
+            -webkit-text-fill-color: #c4a34d !important;
         }
 
         .random-btn {
@@ -894,38 +904,60 @@
                     const ccB = parseFloat(bikeData[manufacturer].bikes[b].engine) || 0;
                     return ccA - ccB;
                 });
-                const specialBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
+                const joolzBikes = ['CBR1100XX Super Blackbird'];
+
+                function getOwnerClass(model) {
+                    if (keithBikes.includes(model)) return 'keith-bike';
+                    if (robBikes.includes(model)) return 'rob-bike';
+                    if (joolzBikes.includes(model)) return 'joolz-bike';
+                    return null;
+                }
+
+                function getOwnerColor(model) {
+                    if (keithBikes.includes(model)) return '#c45baa';
+                    if (robBikes.includes(model)) return '#4dbbc4';
+                    if (joolzBikes.includes(model)) return '#c4a34d';
+                    return null;
+                }
+
                 models.forEach(model => {
                     const option = document.createElement('option');
                     option.value = model;
                     option.textContent = model;
-                    if (specialBikes.includes(model)) {
-                        option.style.color = '#c45baa';
-                    }
+                    const color = getOwnerColor(model);
+                    if (color) option.style.color = color;
                     modelSelect.appendChild(option);
                 });
                 // Auto-select if only one model
                 if (models.length === 1) {
                     modelSelect.value = models[0];
-                    modelSelect.classList.toggle('special-bike', specialBikes.includes(models[0]));
+                    const ownerClass = getOwnerClass(models[0]);
+                    modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
+                    if (ownerClass) modelSelect.classList.add(ownerClass);
                     displayBike(manufacturer, models[0]);
                 }
             } else {
                 modelSelect.disabled = true;
-                modelSelect.classList.remove('special-bike');
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
                 showWelcome();
             }
         });
 
-        const specialBikesList = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
         modelSelect.addEventListener('change', function() {
             const manufacturer = manufacturerSelect.value;
             const model = this.value;
+            this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
             if (manufacturer && model) {
-                this.classList.toggle('special-bike', specialBikesList.includes(model));
+                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
+                const joolzBikes = ['CBR1100XX Super Blackbird'];
+                if (keithBikes.includes(model)) this.classList.add('keith-bike');
+                else if (robBikes.includes(model)) this.classList.add('rob-bike');
+                else if (joolzBikes.includes(model)) this.classList.add('joolz-bike');
                 displayBike(manufacturer, model);
             } else {
-                this.classList.remove('special-bike');
                 showWelcome();
             }
         });
@@ -995,7 +1027,13 @@
             manufacturerSelect.dispatchEvent(new Event('change'));
             setTimeout(() => {
                 modelSelect.value = randomModel;
-                modelSelect.classList.toggle('special-bike', specialBikesList.includes(randomModel));
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
+                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
+                const joolzBikes = ['CBR1100XX Super Blackbird'];
+                if (keithBikes.includes(randomModel)) modelSelect.classList.add('keith-bike');
+                else if (robBikes.includes(randomModel)) modelSelect.classList.add('rob-bike');
+                else if (joolzBikes.includes(randomModel)) modelSelect.classList.add('joolz-bike');
                 displayBike(randomMfr, randomModel);
             }, 100);
         }
