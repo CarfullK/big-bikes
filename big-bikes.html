@@ -98,6 +98,11 @@
             color: #f0f0f0;
         }
 
+        select.special-bike {
+            color: #c45baa !important;
+            -webkit-text-fill-color: #c45baa !important;
+        }
+
         .random-btn {
             width: 100%;
             padding: 15px;
@@ -832,6 +837,7 @@
                         funFact: "The original 1981 Katana was designed by Hans Muth and was so radical it was initially banned in Japan!"
                     },
                     "GS 550": {
+                        imageUrl: "https://handh.blob.core.windows.net/stock/58464-0.jpg?v=63717194937000",
                         keywords: "suzuki,gs550,classic",
                         category: "Standard",
                         tagline: "The bulletproof inline-four",
@@ -901,14 +907,12 @@
                 // Auto-select if only one model
                 if (models.length === 1) {
                     modelSelect.value = models[0];
-                    if (specialBikes.includes(models[0])) {
-                        modelSelect.style.color = '#c45baa';
-                    }
+                    modelSelect.classList.toggle('special-bike', specialBikes.includes(models[0]));
                     displayBike(manufacturer, models[0]);
                 }
             } else {
                 modelSelect.disabled = true;
-                modelSelect.style.color = '#f5f5f5';
+                modelSelect.classList.remove('special-bike');
                 showWelcome();
             }
         });
@@ -918,10 +922,10 @@
             const manufacturer = manufacturerSelect.value;
             const model = this.value;
             if (manufacturer && model) {
-                this.style.color = specialBikesList.includes(model) ? '#c45baa' : '#f5f5f5';
+                this.classList.toggle('special-bike', specialBikesList.includes(model));
                 displayBike(manufacturer, model);
             } else {
-                this.style.color = '#f5f5f5';
+                this.classList.remove('special-bike');
                 showWelcome();
             }
         });
@@ -991,7 +995,7 @@
             manufacturerSelect.dispatchEvent(new Event('change'));
             setTimeout(() => {
                 modelSelect.value = randomModel;
-                modelSelect.style.color = specialBikesList.includes(randomModel) ? '#c45baa' : '#f5f5f5';
+                modelSelect.classList.toggle('special-bike', specialBikesList.includes(randomModel));
                 displayBike(randomMfr, randomModel);
             }, 100);
         }
