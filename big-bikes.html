@@ -613,6 +613,16 @@
                         torque: "105 Nm",
                         weight: "236 kg",
                         funFact: "Named after the Bonneville Salt Flats where Triumph set land speed records in 1956. Steve McQueen, Bob Dylan, and Marlon Brando all rode Bonnevilles."
+                    },
+                    "Tiger 900 (1995)": {
+                        keywords: "triumph,tiger,adventure",
+                        category: "Adventure",
+                        tagline: "The original British adventure bike",
+                        engine: "885cc",
+                        power: "98 HP",
+                        torque: "87 Nm",
+                        weight: "215 kg",
+                        funFact: "The Tiger 900 was Triumph's first real adventure bike after the company's 1990s rebirth. Its triple-cylinder engine offered a unique character compared to the twins and fours dominating the class, and proved Triumph could compete with the big European players."
                     }
                 }
             },
@@ -776,6 +786,16 @@
                         weight: "210 kg",
                         funFact: "The Eurosport was the faired, sportier version of the CX500. With its distinctive half-fairing and more aggressive riding position, it turned the humble commuter into a genuine sport tourer. Same bulletproof V-twin, but with proper wind protection."
                     },
+                    "CX 650 Eurosport": {
+                        keywords: "honda,cx650,eurosport",
+                        category: "Sport Tourer",
+                        tagline: "The bigger Maggot",
+                        engine: "673cc",
+                        power: "65 HP",
+                        torque: "58 Nm",
+                        weight: "220 kg",
+                        funFact: "The CX650 was the beefier sibling of the CX500, with a bored-out 673cc V-twin that added real motorway muscle. It kept the shaft drive and water-cooling that made the CX series so dependable, but with enough extra grunt to make two-up touring a breeze."
+                    },
                     "CB100N": {
                         keywords: "honda,cb100,commuter",
                         imageUrl: "https://classic-motorbikes.net/wp-content/uploads/2018/03/Honda-CB100n.jpg",
@@ -906,7 +926,7 @@
                 });
                 const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
 
                 function getOwnerClass(model) {
                     if (keithBikes.includes(model)) return 'keith-bike';
@@ -952,7 +972,7 @@
             if (manufacturer && model) {
                 const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
                 if (keithBikes.includes(model)) this.classList.add('keith-bike');
                 else if (robBikes.includes(model)) this.classList.add('rob-bike');
                 else if (joolzBikes.includes(model)) this.classList.add('joolz-bike');
@@ -1030,7 +1050,7 @@
                 modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
                 const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
                 if (keithBikes.includes(randomModel)) modelSelect.classList.add('keith-bike');
                 else if (robBikes.includes(randomModel)) modelSelect.classList.add('rob-bike');
                 else if (joolzBikes.includes(randomModel)) modelSelect.classList.add('joolz-bike');
