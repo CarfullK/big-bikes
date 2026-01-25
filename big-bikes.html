@@ -118,6 +118,11 @@
             -webkit-text-fill-color: #d4777c !important;
         }
 
+        select.keith-rob-bike {
+            color: #888bb7 !important;
+            -webkit-text-fill-color: #888bb7 !important;
+        }
+
         .random-btn {
             width: 100%;
             padding: 15px;
@@ -376,6 +381,21 @@
         // Using LoremFlickr for images (Flickr Creative Commons)
         // Format: https://loremflickr.com/width/height/keyword1,keyword2
         const bikeData = {
+            "Aprilia": {
+                bikes: {
+                    "RS250 Reggiani Replica": {
+                        imageUrl: "https://images.classic.com/vehicles/528131010fe9c25a399900d99e648644f41621f4?w=1200&h=676&fit=crop",
+                        keywords: "aprilia,rs250,reggiani,replica",
+                        category: "Sport",
+                        tagline: "Two-stroke GP replica",
+                        engine: "249cc",
+                        power: "70 HP",
+                        torque: "36 Nm",
+                        weight: "141 kg",
+                        funFact: "The RS250 was one of the last great two-stroke sportbikes. The Loris Reggiani replica celebrated the Italian rider's GP success. With its screaming twin-cylinder engine and razor-sharp handling, it was as close to a GP bike as you could buy for the road."
+                    }
+                }
+            },
             "Harley-Davidson": {
                 bikes: {
                     "Road Glide Special": {
@@ -452,6 +472,16 @@
                         weight: "188 kg",
                         funFact: "The Monster basically invented the naked bike category in 1993. Designer Miguel Galluzzi created it as a rebellion against fully-faired sportbikes - he wanted to show off that beautiful trellis frame."
                     },
+                    "1098S": {
+                        keywords: "ducati,1098s,superbike",
+                        category: "Superbike",
+                        tagline: "Italian superbike perfection",
+                        engine: "1099cc",
+                        power: "160 HP",
+                        torque: "123 Nm",
+                        weight: "173 kg",
+                        funFact: "The 1098S was Ducati's World Superbike championship weapon. Its Testastretta Evoluzione engine and Ohlins suspension made it devastatingly fast on track, while that unmistakable red paintwork made it a head-turner everywhere."
+                    },
                     "Multistrada V4": {
                         keywords: "ducati,multistrada,adventure",
                         category: "Adventure",
@@ -461,6 +491,20 @@
                         torque: "125 Nm",
                         weight: "218 kg",
                         funFact: "The Multistrada was the first production motorcycle with front and rear radar for adaptive cruise control. It can genuinely do sport riding, touring, urban commuting, and light off-road - hence 'Multi-strada' (many roads)."
+                    }
+                }
+            },
+            "Cagiva": {
+                bikes: {
+                    "River 600": {
+                        keywords: "cagiva,river,600",
+                        category: "Dual Sport",
+                        tagline: "Italian trail style",
+                        engine: "599cc",
+                        power: "48 HP",
+                        torque: "52 Nm",
+                        weight: "175 kg",
+                        funFact: "The Cagiva River 600 used Suzuki's proven DR600 engine in Italian chassis. Cagiva added their own styling flair and the result was a capable dual-sport with more character than its Japanese rivals. In blue, it stood out from the crowd."
                     }
                 }
             },
@@ -505,6 +549,36 @@
                         torque: "175 Nm",
                         weight: "348 kg",
                         funFact: "The K 1600's inline-six is the narrowest six-cylinder engine ever put in a motorcycle. It's so smooth that BMW had to add a sound enhancer so riders could actually hear the engine!"
+                    },
+                    "S1000RR (2011)": {
+                        keywords: "bmw,s1000rr,superbike",
+                        category: "Superbike",
+                        tagline: "First-gen German missile",
+                        engine: "999cc",
+                        power: "193 HP",
+                        torque: "112 Nm",
+                        weight: "183 kg",
+                        funFact: "The 2011 S1000RR was part of the game-changing first generation that shocked the superbike world. In silver, it looked like a precision surgical instrument - fitting for German engineering at its finest."
+                    },
+                    "S1000XR": {
+                        keywords: "bmw,s1000xr,sport touring",
+                        category: "Sport Touring",
+                        tagline: "Sports tourer on steroids",
+                        engine: "999cc",
+                        power: "165 HP",
+                        torque: "114 Nm",
+                        weight: "226 kg",
+                        funFact: "BMW took the S1000RR's mental engine and put it in a comfortable adventure-style chassis. The result is a sport tourer that can embarrass sportbikes on twisty roads while crossing continents in comfort."
+                    },
+                    "F800S": {
+                        keywords: "bmw,f800s,sport",
+                        category: "Sport",
+                        tagline: "Parallel twin performer",
+                        engine: "798cc",
+                        power: "85 HP",
+                        torque: "86 Nm",
+                        weight: "182 kg",
+                        funFact: "The F800S was BMW's entry into the middleweight sport market. Its parallel twin with 360-degree firing order gave a unique character, and in red it looked properly aggressive for a BMW."
                     }
                 }
             },
@@ -550,8 +624,38 @@
                         weight: "257 kg",
                         funFact: "The Versys name combines 'versatile' and 'system'. It uses a detuned version of the Ninja 1000's engine, giving it sports bike performance with upright comfort."
                     },
+                    "KH250": {
+                        keywords: "kawasaki,kh250,triple",
+                        category: "Standard",
+                        tagline: "The smoky triple",
+                        engine: "249cc",
+                        power: "32 HP",
+                        torque: "26 Nm",
+                        weight: "158 kg",
+                        funFact: "The KH250 was part of Kawasaki's legendary two-stroke triple family. These bikes were known for their brutal acceleration and clouds of two-stroke smoke. The green and blue livery became iconic, and survivors are now prized by collectors."
+                    },
+                    "KR1": {
+                        keywords: "kawasaki,kr1,sportbike",
+                        category: "Sport",
+                        tagline: "Street-legal GP racer",
+                        engine: "249cc",
+                        power: "60 HP",
+                        torque: "35 Nm",
+                        weight: "140 kg",
+                        funFact: "The KR1 was Kawasaki's answer to the two-stroke sportbike wars of the late 80s. Its tandem-twin engine screamed to 12,000 RPM and delivered genuine race-bike performance. The red and white livery echoed Kawasaki's GP machines."
+                    },
+                    "KLX650": {
+                        keywords: "kawasaki,klx650,dualsport",
+                        category: "Dual Sport",
+                        tagline: "Big green trailblazer",
+                        engine: "651cc",
+                        power: "46 HP",
+                        torque: "52 Nm",
+                        weight: "159 kg",
+                        funFact: "The KLX650 was Kawasaki's big-bore dual sport thumper. Its liquid-cooled single made it more refined than air-cooled competitors, and in classic Kawasaki green it looked ready to tackle any adventure."
+                    },
                     "Z1000 J3 (1984)": {
-                        imageUrl: "images/z1000-j3.jpg",
+                        imageUrl: "images/keith/z1000-j3.jpg",
                         keywords: "kawasaki,z1000,j3",
                         category: "Standard",
                         tagline: "Successor to the mighty Z1",
@@ -574,6 +678,16 @@
                         torque: "125 Nm",
                         weight: "212 kg",
                         funFact: "The 1190 Adventure was KTM's first full-size adventure bike and immediately challenged the BMW GS dominance. Built with genuine Dakar DNA from KTM's rally raid program, it was the most powerful adventure bike when launched and weighed less than most competitors."
+                    },
+                    "350 EXC-F (2024)": {
+                        keywords: "ktm,350,excf,enduro",
+                        category: "Enduro",
+                        tagline: "Ready to Race orange",
+                        engine: "350cc",
+                        power: "45 HP",
+                        torque: "37 Nm",
+                        weight: "105 kg",
+                        funFact: "The 350 EXC-F is KTM's sweet-spot enduro weapon. Light enough to throw around technical trails but with enough power to tackle anything, it's the choice of many professional enduro riders. The orange is unmistakably KTM."
                     }
                 }
             },
@@ -644,6 +758,27 @@
                         torque: "111 Nm",
                         weight: "210 kg",
                         funFact: "The MT-10 uses a detuned version of the YZF-R1's crossplane crankshaft engine. That irregular firing order gives it an intoxicating growl and incredible corner-exit traction. Yamaha called its aggressive styling 'Dark Side of Japan'."
+                    },
+                    "RXS100": {
+                        keywords: "yamaha,rxs100,commuter",
+                        category: "Commuter",
+                        tagline: "The sporty stroker",
+                        engine: "98cc",
+                        power: "11 HP",
+                        torque: "10 Nm",
+                        weight: "96 kg",
+                        funFact: "The RXS100 was a peppy two-stroke commuter that punched well above its weight. Its rev-happy engine and light weight made it a hoot in traffic, while the disc brake up front was a luxury in the learner market. A cult classic among small bike enthusiasts."
+                    },
+                    "DT125R": {
+                        imageUrl: "images/rob/dt125r-red.jpg",
+                        keywords: "yamaha,dt125r,enduro",
+                        category: "Enduro",
+                        tagline: "The teenage trail weapon",
+                        engine: "124cc",
+                        power: "20 HP",
+                        torque: "19 Nm",
+                        weight: "109 kg",
+                        funFact: "The DT125R was the bike of choice for teenagers who wanted adventure. Its liquid-cooled two-stroke engine was torquey enough for trails yet learner-legal. Many riders have fond memories of thrashing these through woods and fields on weekend adventures."
                     }
                 }
             },
@@ -651,7 +786,7 @@
                 bikes: {
                     "150 Cadet": {
                         keywords: "james,cadet,vintage,motorcycle",
-                        imageUrl: "images/james-150-cadet.jpg",
+                        imageUrl: "images/keith/james-150-cadet.jpg",
                         category: "Classic",
                         tagline: "British lightweight charm",
                         engine: "150cc",
@@ -721,6 +856,20 @@
                     }
                 }
             },
+            "Puch": {
+                bikes: {
+                    "Maxi": {
+                        keywords: "puch,maxi,moped",
+                        category: "Moped",
+                        tagline: "Austrian moped icon",
+                        engine: "49cc",
+                        power: "2 HP",
+                        torque: "3 Nm",
+                        weight: "45 kg",
+                        funFact: "The Puch Maxi was one of the most popular mopeds ever made. Built in Austria from 1969, its simple single-speed automatic transmission and bulletproof engine made it the perfect first set of motorized wheels for millions of teenagers across Europe."
+                    }
+                }
+            },
             "Honda": {
                 bikes: {
                     "Gold Wing": {
@@ -764,7 +913,7 @@
                         funFact: "Honda coined 'Neo Sports Cafe' to describe the CB1000R's design philosophy - a modern reinterpretation of the original CB750."
                     },
                     "VFR750": {
-                        imageUrl: "images/vfr750.jpg",
+                        imageUrl: "images/keith/vfr750.jpg",
                         keywords: "vfr750,honda,rc36",
                         category: "Sport Touring",
                         tagline: "The V4 legend",
@@ -798,7 +947,7 @@
                     },
                     "CX 500 Eurosport": {
                         keywords: "honda,cx500,eurosport",
-                        imageUrl: "images/cx500-eurosport.jpg",
+                        imageUrl: "images/keith/cx500-eurosport.jpg",
                         category: "Sport Tourer",
                         tagline: "The sporty Maggot",
                         engine: "496cc",
@@ -819,7 +968,7 @@
                     },
                     "CB100N": {
                         keywords: "honda,cb100,commuter",
-                        imageUrl: "images/cb100n.jpg",
+                        imageUrl: "images/keith/cb100n.jpg",
                         category: "Commuter",
                         tagline: "Where legends begin",
                         engine: "99cc",
@@ -827,6 +976,56 @@
                         torque: "8 Nm",
                         weight: "87 kg",
                         funFact: "The CB100N was many riders' first taste of freedom. This little single-cylinder commuter was virtually indestructible and sipped fuel. Countless bikers learned to ride on these before graduating to bigger machines - the perfect gateway drug to motorcycling!"
+                    },
+                    "MT5": {
+                        keywords: "honda,mt5,minibike",
+                        category: "Minibike",
+                        tagline: "Pocket rocket learner",
+                        engine: "49cc",
+                        power: "3 HP",
+                        torque: "3 Nm",
+                        weight: "65 kg",
+                        funFact: "The MT5 was Honda's mini trail bike that got countless teenagers hooked on two wheels. With its tiny 49cc engine and automatic clutch, it was the perfect first bike. The black and yellow color scheme became iconic in the 80s."
+                    },
+                    "CB250 Superdream": {
+                        keywords: "honda,cb250,superdream",
+                        category: "Standard",
+                        tagline: "The reliable learner",
+                        engine: "249cc",
+                        power: "27 HP",
+                        torque: "21 Nm",
+                        weight: "164 kg",
+                        funFact: "The Superdream earned its name from Honda's marketing but lived up to it with bulletproof reliability. Its parallel-twin engine was smooth and forgiving, making it the bike of choice for UK riding schools throughout the 1980s."
+                    },
+                    "CG125": {
+                        keywords: "honda,cg125,commuter",
+                        category: "Commuter",
+                        tagline: "The indestructible commuter",
+                        engine: "124cc",
+                        power: "11 HP",
+                        torque: "10 Nm",
+                        weight: "106 kg",
+                        funFact: "The CG125 is legendary for its reliability - these bikes run forever with minimal maintenance. Couriers, learners, and commuters worldwide have depended on this simple single-cylinder workhorse since 1976. Many have clocked over 100,000 miles."
+                    },
+                    "CB1000F": {
+                        keywords: "honda,cb1000,big one",
+                        category: "Standard",
+                        tagline: "The Big One in Benetton colours",
+                        engine: "998cc",
+                        power: "98 HP",
+                        torque: "88 Nm",
+                        weight: "235 kg",
+                        funFact: "The CB1000F 'Big One' was a muscular UJM that looked stunning in Benetton racing colours. Its CBR1000F-derived engine offered smooth, reliable power, and it became a popular choice for riders wanting big-bike presence without sportbike commitment."
+                    },
+                    "CB900F Hornet": {
+                        keywords: "honda,hornet,900,naked",
+                        category: "Naked",
+                        tagline: "The big angry wasp",
+                        engine: "919cc",
+                        power: "109 HP",
+                        torque: "90 Nm",
+                        weight: "194 kg",
+                        funFact: "The Hornet 900 took Honda's acclaimed CBR900RR Fireblade engine and wrapped it in naked streetfighter bodywork. The result was an incredibly fun hooligan machine with superbike performance and upright comfort."
                     }
                 }
             },
@@ -834,7 +1033,7 @@
                 bikes: {
                     "Kingswood Wagon": {
                         keywords: "holden,kingswood,wagon",
-                        imageUrl: "images/kingswood-wagon.jpg",
+                        imageUrl: "images/keith/kingswood-wagon.jpg",
                         category: "Station Wagon",
                         tagline: "Australia's family hauler",
                         engine: "3.3L Six",
@@ -847,6 +1046,26 @@
             },
             "Suzuki": {
                 bikes: {
+                    "TL1000S": {
+                        keywords: "suzuki,tl1000s,sportbike",
+                        category: "Sport",
+                        tagline: "The wild V-twin",
+                        engine: "996cc",
+                        power: "125 HP",
+                        torque: "100 Nm",
+                        weight: "187 kg",
+                        funFact: "The TL1000S was Suzuki's answer to Ducati's V-twin dominance. Its rotary damper rear suspension was controversial - some loved the raw, wild character while others found it too unpredictable. A true hooligan's bike."
+                    },
+                    "DR350S": {
+                        keywords: "suzuki,dr350,dualsport",
+                        category: "Dual Sport",
+                        tagline: "Go-anywhere thumper",
+                        engine: "349cc",
+                        power: "30 HP",
+                        torque: "30 Nm",
+                        weight: "133 kg",
+                        funFact: "The DR350S was a bulletproof single-cylinder dual sport that could handle everything from commuting to trail riding. Its simplicity and reliability made it a favourite for adventure riders on a budget."
+                    },
                     "Hayabusa": {
                         keywords: "suzuki,hayabusa,sportbike",
                         category: "Sport Tourer",
@@ -888,7 +1107,7 @@
                         funFact: "The original 1981 Katana was designed by Hans Muth and was so radical it was initially banned in Japan!"
                     },
                     "GS 550": {
-                        imageUrl: "images/gs550.jpg",
+                        imageUrl: "images/keith/gs550.jpg",
                         keywords: "suzuki,gs550,classic",
                         category: "Standard",
                         tagline: "The bulletproof inline-four",
@@ -899,7 +1118,7 @@
                         funFact: "The GS550 was legendary for its reliability. Many mechanics called it 'unbreakable' - these bikes regularly clocked 100,000+ miles with basic maintenance. It helped establish Suzuki as a serious player in the 1970s."
                     },
                     "Marauder 800": {
-                        imageUrl: "images/marauder-800.jpg",
+                        imageUrl: "images/keith/marauder-800.jpg",
                         keywords: "suzuki,marauder,cruiser",
                         category: "Cruiser",
                         tagline: "The V-twin cruiser",
@@ -910,7 +1129,7 @@
                         funFact: "The Marauder 800 was Suzuki's entry into the American cruiser market. Its 45-degree V-twin and low seat height made it a favourite for new riders wanting classic cruiser style without intimidating power."
                     },
                     "Bandit 1200 (1996)": {
-                        imageUrl: "images/bandit-1200.jpg",
+                        imageUrl: "images/keith/bandit-1200.jpg",
                         keywords: "suzuki,bandit,1200",
                         category: "Standard",
                         tagline: "The budget muscle bike",
@@ -920,9 +1139,20 @@
                         weight: "230 kg",
                         funFact: "The Bandit was Suzuki's answer to riders who wanted big power without a superbike price tag. Using a detuned GSX-R1100 engine, it offered incredible value and became a favourite for stunters and commuters alike."
                     },
+                    "RG400 Gamma": {
+                        imageUrl: "images/rob/rg400-gamma.jpg",
+                        keywords: "suzuki,rg400,gamma,twostroke",
+                        category: "Sport",
+                        tagline: "Square-four screamer",
+                        engine: "398cc",
+                        power: "64 HP",
+                        torque: "44 Nm",
+                        weight: "156 kg",
+                        funFact: "The RG400 Gamma was a road-legal GP replica with a screaming square-four two-stroke engine. Its twin-crank design came straight from Suzuki's race bikes. Japan-only when new, these are now highly sought-after collector machines."
+                    },
                     "GSX 400": {
                         keywords: "suzuki,gsx400,four",
-                        imageUrl: "images/gsx400.jpg",
+                        imageUrl: "images/keith/gsx400.jpg",
                         category: "Sport",
                         tagline: "Mini superbike screamer",
                         engine: "399cc",
@@ -957,12 +1187,14 @@
                     return ccA - ccB;
                 });
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2024)', 'River 600'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
+                const keithRobBikes = ['DT125R'];
 
                 function getOwnerClass(model) {
                     if (keithJoolzBikes.includes(model)) return 'keith-joolz-bike';
+                    if (keithRobBikes.includes(model)) return 'keith-rob-bike';
                     if (keithBikes.includes(model)) return 'keith-bike';
                     if (robBikes.includes(model)) return 'rob-bike';
                     if (joolzBikes.includes(model)) return 'joolz-bike';
@@ -971,6 +1203,7 @@
 
                 function getOwnerColor(model) {
                     if (keithJoolzBikes.includes(model)) return '#d4777c';
+                    if (keithRobBikes.includes(model)) return '#888bb7';
                     if (keithBikes.includes(model)) return '#c45baa';
                     if (robBikes.includes(model)) return '#4dbbc4';
                     if (joolzBikes.includes(model)) return '#c4a34d';
@@ -989,13 +1222,13 @@
                 if (models.length === 1) {
                     modelSelect.value = models[0];
                     const ownerClass = getOwnerClass(models[0]);
-                    modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
+                    modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
                     if (ownerClass) modelSelect.classList.add(ownerClass);
                     displayBike(manufacturer, models[0]);
                 }
             } else {
                 modelSelect.disabled = true;
-                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
                 showWelcome();
             }
         });
@@ -1003,13 +1236,15 @@
         modelSelect.addEventListener('change', function() {
             const manufacturer = manufacturerSelect.value;
             const model = this.value;
-            this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
+            this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
             if (manufacturer && model) {
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2024)', 'River 600'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
+                const keithRobBikes = ['DT125R'];
                 if (keithJoolzBikes.includes(model)) this.classList.add('keith-joolz-bike');
+                else if (keithRobBikes.includes(model)) this.classList.add('keith-rob-bike');
                 else if (keithBikes.includes(model)) this.classList.add('keith-bike');
                 else if (robBikes.includes(model)) this.classList.add('rob-bike');
                 else if (joolzBikes.includes(model)) this.classList.add('joolz-bike');
@@ -1084,12 +1319,14 @@
             manufacturerSelect.dispatchEvent(new Event('change'));
             setTimeout(() => {
                 modelSelect.value = randomModel;
-                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2024)', 'River 600'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
+                const keithRobBikes = ['DT125R'];
                 if (keithJoolzBikes.includes(randomModel)) modelSelect.classList.add('keith-joolz-bike');
+                else if (keithRobBikes.includes(randomModel)) modelSelect.classList.add('keith-rob-bike');
                 else if (keithBikes.includes(randomModel)) modelSelect.classList.add('keith-bike');
                 else if (robBikes.includes(randomModel)) modelSelect.classList.add('rob-bike');
                 else if (joolzBikes.includes(randomModel)) modelSelect.classList.add('joolz-bike');

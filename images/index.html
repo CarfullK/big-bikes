@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keith's Bike Images</title>
+    <title>Bike Images Gallery</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,9 +13,17 @@
             margin: 0;
         }
         h1 {
-            color: #c45baa;
             text-align: center;
+            margin-bottom: 10px;
         }
+        h2 {
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+        h2.keith { color: #c45baa; border-color: #c45baa; }
+        h2.rob { color: #4dbbc4; border-color: #4dbbc4; }
+        h2.joolz { color: #c4a34d; border-color: #c4a34d; }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -55,48 +63,67 @@
 </head>
 <body>
     <a class="back-link" href="../big-bikes.html">&larr; Back to Big Bikes</a>
-    <h1>Keith's Bike Images</h1>
+    <h1>Bike Images Gallery</h1>
+
+    <h2 class="keith">Keith's Bikes</h2>
     <div class="gallery">
         <div class="image-card">
-            <a href="bandit-1200.jpg"><img src="bandit-1200.jpg" alt="Bandit 1200"></a>
+            <a href="keith/bandit-1200.jpg"><img src="keith/bandit-1200.jpg" alt="Bandit 1200"></a>
             <p>Bandit 1200</p>
         </div>
         <div class="image-card">
-            <a href="cb100n.jpg"><img src="cb100n.jpg" alt="CB100N"></a>
+            <a href="keith/cb100n.jpg"><img src="keith/cb100n.jpg" alt="CB100N"></a>
             <p>CB100N</p>
         </div>
         <div class="image-card">
-            <a href="cx500-eurosport.jpg"><img src="cx500-eurosport.jpg" alt="CX 500 Eurosport"></a>
+            <a href="keith/cx500-eurosport.jpg"><img src="keith/cx500-eurosport.jpg" alt="CX 500 Eurosport"></a>
             <p>CX 500 Eurosport</p>
         </div>
         <div class="image-card">
-            <a href="gs550.jpg"><img src="gs550.jpg" alt="GS 550"></a>
+            <a href="keith/gs550.jpg"><img src="keith/gs550.jpg" alt="GS 550"></a>
             <p>GS 550</p>
         </div>
         <div class="image-card">
-            <a href="gsx400.jpg"><img src="gsx400.jpg" alt="GSX 400"></a>
+            <a href="keith/gsx400.jpg"><img src="keith/gsx400.jpg" alt="GSX 400"></a>
             <p>GSX 400</p>
         </div>
         <div class="image-card">
-            <a href="james-150-cadet.jpg"><img src="james-150-cadet.jpg" alt="James 150 Cadet"></a>
+            <a href="keith/james-150-cadet.jpg"><img src="keith/james-150-cadet.jpg" alt="James 150 Cadet"></a>
             <p>James 150 Cadet</p>
         </div>
         <div class="image-card">
-            <a href="kingswood-wagon.jpg"><img src="kingswood-wagon.jpg" alt="Kingswood Wagon"></a>
+            <a href="keith/kingswood-wagon.jpg"><img src="keith/kingswood-wagon.jpg" alt="Kingswood Wagon"></a>
             <p>Kingswood Wagon</p>
         </div>
         <div class="image-card">
-            <a href="marauder-800.jpg"><img src="marauder-800.jpg" alt="Marauder 800"></a>
+            <a href="keith/marauder-800.jpg"><img src="keith/marauder-800.jpg" alt="Marauder 800"></a>
             <p>Marauder 800</p>
         </div>
         <div class="image-card">
-            <a href="vfr750.jpg"><img src="vfr750.jpg" alt="VFR750"></a>
+            <a href="keith/vfr750.jpg"><img src="keith/vfr750.jpg" alt="VFR750"></a>
             <p>VFR750</p>
         </div>
         <div class="image-card">
-            <a href="z1000-j3.jpg"><img src="z1000-j3.jpg" alt="Z1000 J3"></a>
+            <a href="keith/z1000-j3.jpg"><img src="keith/z1000-j3.jpg" alt="Z1000 J3"></a>
             <p>Z1000 J3</p>
         </div>
+    </div>
+
+    <h2 class="rob">Rob's Bikes</h2>
+    <div class="gallery">
+        <div class="image-card">
+            <a href="rob/dt125r-red.jpg"><img src="rob/dt125r-red.jpg" alt="DT125R"></a>
+            <p>DT125R</p>
+        </div>
+        <div class="image-card">
+            <a href="rob/rg400-gamma.jpg"><img src="rob/rg400-gamma.jpg" alt="RG400 Gamma"></a>
+            <p>RG400 Gamma</p>
+        </div>
+    </div>
+
+    <h2 class="joolz">Joolz's Bikes</h2>
+    <div class="gallery">
+        <p style="text-align: center; color: #888;">No local images yet</p>
     </div>
 </body>
 </html>
