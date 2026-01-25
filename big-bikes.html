@@ -898,6 +898,17 @@
                         weight: "205 kg",
                         funFact: "The GS550 was legendary for its reliability. Many mechanics called it 'unbreakable' - these bikes regularly clocked 100,000+ miles with basic maintenance. It helped establish Suzuki as a serious player in the 1970s."
                     },
+                    "Marauder 800": {
+                        imageUrl: "https://www.nationalpowersports.net/WEBSITEIMAGES/50496/_MG_0644.jpg",
+                        keywords: "suzuki,marauder,cruiser",
+                        category: "Cruiser",
+                        tagline: "The V-twin cruiser",
+                        engine: "805cc",
+                        power: "52 HP",
+                        torque: "62 Nm",
+                        weight: "230 kg",
+                        funFact: "The Marauder 800 was Suzuki's entry into the American cruiser market. Its 45-degree V-twin and low seat height made it a favourite for new riders wanting classic cruiser style without intimidating power."
+                    },
                     "Bandit 1200 (1996)": {
                         imageUrl: "https://www.globalsuzuki.com/motorcycle/smgs/digital-archive/images/2_bike/ss4/img_029_01.jpg",
                         keywords: "suzuki,bandit,1200",
@@ -945,7 +956,7 @@
                     const ccB = parseFloat(bikeData[manufacturer].bikes[b].engine) || 0;
                     return ccA - ccB;
                 });
-                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
                 const keithJoolzBikes = ['CB100N'];
@@ -994,7 +1005,7 @@
             const model = this.value;
             this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
             if (manufacturer && model) {
-                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
                 const keithJoolzBikes = ['CB100N'];
@@ -1074,7 +1085,7 @@
             setTimeout(() => {
                 modelSelect.value = randomModel;
                 modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
-                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
                 const keithJoolzBikes = ['CB100N'];
