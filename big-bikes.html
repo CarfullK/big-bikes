@@ -113,6 +113,11 @@
             -webkit-text-fill-color: #c4a34d !important;
         }
 
+        select.keith-joolz-bike {
+            color: #d4777c !important;
+            -webkit-text-fill-color: #d4777c !important;
+        }
+
         .random-btn {
             width: 100%;
             padding: 15px;
@@ -657,6 +662,21 @@
                     }
                 }
             },
+            "Jawa": {
+                bikes: {
+                    "CZ 175": {
+                        imageUrl: "https://www.lanemotormuseum.org/wp-content/uploads/2015/01/jawa_175_1959web1-846.jpeg",
+                        keywords: "jawa,cz,175,vintage",
+                        category: "Classic",
+                        tagline: "Czechoslovak two-stroke legend",
+                        engine: "175cc",
+                        power: "12 HP",
+                        torque: "14 Nm",
+                        weight: "110 kg",
+                        funFact: "Jawa and CZ were Czechoslovakia's motorcycle giants, merged under communist rule. The CZ 175 was a rugged two-stroke that became popular across Eastern Europe and developing nations for its simplicity and reliability. These bikes were built to survive roads that would destroy lesser machines."
+                    }
+                }
+            },
             "Indian": {
                 bikes: {
                     "Chieftain Dark Horse": {
@@ -925,11 +945,13 @@
                     const ccB = parseFloat(bikeData[manufacturer].bikes[b].engine) || 0;
                     return ccA - ccB;
                 });
-                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const keithJoolzBikes = ['CB100N'];
 
                 function getOwnerClass(model) {
+                    if (keithJoolzBikes.includes(model)) return 'keith-joolz-bike';
                     if (keithBikes.includes(model)) return 'keith-bike';
                     if (robBikes.includes(model)) return 'rob-bike';
                     if (joolzBikes.includes(model)) return 'joolz-bike';
@@ -937,6 +959,7 @@
                 }
 
                 function getOwnerColor(model) {
+                    if (keithJoolzBikes.includes(model)) return '#d4777c';
                     if (keithBikes.includes(model)) return '#c45baa';
                     if (robBikes.includes(model)) return '#4dbbc4';
                     if (joolzBikes.includes(model)) return '#c4a34d';
@@ -955,13 +978,13 @@
                 if (models.length === 1) {
                     modelSelect.value = models[0];
                     const ownerClass = getOwnerClass(models[0]);
-                    modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
+                    modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
                     if (ownerClass) modelSelect.classList.add(ownerClass);
                     displayBike(manufacturer, models[0]);
                 }
             } else {
                 modelSelect.disabled = true;
-                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
                 showWelcome();
             }
         });
@@ -969,12 +992,14 @@
         modelSelect.addEventListener('change', function() {
             const manufacturer = manufacturerSelect.value;
             const model = this.value;
-            this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
+            this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
             if (manufacturer && model) {
-                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
-                if (keithBikes.includes(model)) this.classList.add('keith-bike');
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const keithJoolzBikes = ['CB100N'];
+                if (keithJoolzBikes.includes(model)) this.classList.add('keith-joolz-bike');
+                else if (keithBikes.includes(model)) this.classList.add('keith-bike');
                 else if (robBikes.includes(model)) this.classList.add('rob-bike');
                 else if (joolzBikes.includes(model)) this.classList.add('joolz-bike');
                 displayBike(manufacturer, model);
@@ -1048,11 +1073,13 @@
             manufacturerSelect.dispatchEvent(new Event('change'));
             setTimeout(() => {
                 modelSelect.value = randomModel;
-                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike');
-                const keithBikes = ['CB100N', 'Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
+                modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike');
+                const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon'];
                 const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)'];
-                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)'];
-                if (keithBikes.includes(randomModel)) modelSelect.classList.add('keith-bike');
+                const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175'];
+                const keithJoolzBikes = ['CB100N'];
+                if (keithJoolzBikes.includes(randomModel)) modelSelect.classList.add('keith-joolz-bike');
+                else if (keithBikes.includes(randomModel)) modelSelect.classList.add('keith-bike');
                 else if (robBikes.includes(randomModel)) modelSelect.classList.add('rob-bike');
                 else if (joolzBikes.includes(randomModel)) modelSelect.classList.add('joolz-bike');
                 displayBike(randomMfr, randomModel);
