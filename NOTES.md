@@ -19,3 +19,28 @@ Process to download external images and store them locally in the repo to preven
 
 ### Usage:
 Tell Claude: "Run OPT1 for Rob" or "Run OPT1 for Joolz"
+
+## Bike Colors (for finding correct images)
+
+### Rob's Bikes:
+- Honda MT5 - black and yellow
+- Yamaha RXS100 - maroon
+- Kawasaki KR1 - red and white
+- Kawasaki KH250 - green and blue
+- Honda CB250 Superdream - blue
+- Honda CG125 - early version
+- Suzuki TL1000S - silver
+- Honda CB1000F - Benetton colours
+- Kawasaki KLX650 - green
+- Ducati 1098S - red
+- BMW S1000RR (2011) - silver
+- BMW S1000XR - grey with graphics
+- BMW F800S - red
+- KTM 350 EXC-F (2014) - orange
+- Honda CB900F Hornet - blue
+- Cagiva River 600 - blue
+- Suzuki DR350S - (no color specified)
+
+### Joolz's Bikes:
+- Puch Maxi - (no color specified)
+- Honda CX 650 Eurosport - (no color specified)
