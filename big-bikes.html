@@ -464,7 +464,11 @@
             "Aprilia": {
                 bikes: {
                     "RS250 Reggiani Replica": {
-                        imageUrl: "images/rob/rs250-reggiani.jpg",
+                        imageUrl: "images/rob/aprilia-rs250.jpg",
+                        images: [
+                            "images/rob/aprilia-rs250.jpg",
+                            "images/rob/rs250-reggiani.jpg"
+                        ],
                         keywords: "aprilia,rs250,reggiani,replica",
                         category: "Sport",
                         tagline: "Two-stroke GP replica",
@@ -720,6 +724,28 @@
                         weight: "158 kg",
                         funFact: "The KH250 was part of Kawasaki's legendary two-stroke triple family. These bikes were known for their brutal acceleration and clouds of two-stroke smoke. The green and blue livery became iconic, and survivors are now prized by collectors."
                     },
+                    "KH400": {
+                        imageUrl: "images/rob/kawasaki-kh400.jpg",
+                        keywords: "kawasaki,kh400,triple",
+                        category: "Standard",
+                        tagline: "The bigger smoky triple",
+                        engine: "398cc",
+                        power: "45 HP",
+                        torque: "38 Nm",
+                        weight: "174 kg",
+                        funFact: "The KH400 was the middleweight of Kawasaki's fearsome two-stroke triple family. With more power than the 250 but lighter than the 500, many considered it the sweet spot of the range. That distinctive three-cylinder wail and clouds of smoke made it unmistakable."
+                    },
+                    "Z750": {
+                        imageUrl: "images/rob/kawasaki-z750.jpg",
+                        keywords: "kawasaki,z750,naked",
+                        category: "Naked",
+                        tagline: "Middleweight monster",
+                        engine: "748cc",
+                        power: "104 HP",
+                        torque: "78 Nm",
+                        weight: "203 kg",
+                        funFact: "The Z750 was Kawasaki's hooligan middleweight that punched well above its weight. Its inline-four was detuned from the ZX-7R but still delivered serious thrills. Lightweight and agile, it became a favourite for riders wanting sportbike fun without the committed riding position."
+                    },
                     "KR1": {
                         imageUrl: "images/rob/kawasaki-kr1.jpg",
                         keywords: "kawasaki,kr1,sportbike",
@@ -880,6 +906,17 @@
                         torque: "19 Nm",
                         weight: "109 kg",
                         funFact: "The DT125R was the bike of choice for teenagers who wanted adventure. Its liquid-cooled two-stroke engine was torquey enough for trails yet learner-legal. Many riders have fond memories of thrashing these through woods and fields on weekend adventures."
+                    },
+                    "Fazer 600": {
+                        imageUrl: "images/rob/yamaha-fazer.jpg",
+                        keywords: "yamaha,fazer,sport touring",
+                        category: "Sport Touring",
+                        tagline: "The sensible sportbike",
+                        engine: "599cc",
+                        power: "95 HP",
+                        torque: "65 Nm",
+                        weight: "208 kg",
+                        funFact: "The Fazer took Yamaha's legendary Thundercat engine and wrapped it in a practical half-faired package. It became the thinking rider's choice - all the performance of a sportbike with comfort for longer journeys. Insurance companies loved it, and so did riders' wrists."
                     }
                 }
             },
@@ -1283,8 +1320,7 @@
                         imageUrl: "images/rob/rg400-gamma.jpg",
                         images: [
                             "images/rob/rg400-gamma.jpg",
-                            "images/rob/rg400-gamma-2.jpg",
-                            "images/rob/rg400-gamma-3.jpg"
+                            "images/rob/rg400-gamma-2.jpg"
                         ],
                         keywords: "suzuki,rg400,gamma,twostroke",
                         category: "Sport",
@@ -1294,6 +1330,17 @@
                         torque: "44 Nm",
                         weight: "156 kg",
                         funFact: "The RG400 Gamma was a road-legal GP replica with a screaming square-four two-stroke engine. Its twin-crank design came straight from Suzuki's race bikes. Japan-only when new, these are now highly sought-after collector machines."
+                    },
+                    "RG500 Gamma": {
+                        imageUrl: "images/rob/suzuki-rg500.jpg",
+                        keywords: "suzuki,rg500,gamma,twostroke",
+                        category: "Sport",
+                        tagline: "The ultimate stroker",
+                        engine: "498cc",
+                        power: "95 HP",
+                        torque: "54 Nm",
+                        weight: "156 kg",
+                        funFact: "The RG500 Gamma was as close to a Grand Prix bike as you could buy for the road. Its square-four two-stroke engine was derived directly from Suzuki's 500cc GP racers that won world championships. With 95 HP and featherweight mass, it was genuinely terrifying - and utterly addictive."
                     },
                     "GSX 400": {
                         keywords: "suzuki,gsx400,four",
@@ -1338,7 +1385,7 @@
                     return ccA - ccB;
                 });
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon', 'Click 125i'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'KH400', 'Z750', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'RG500 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600', 'Fazer 600'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
                 const keithRobBikes = ['DT125R'];
@@ -1390,7 +1437,7 @@
             this.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
             if (manufacturer && model) {
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon', 'Click 125i'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'KH400', 'Z750', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'RG500 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600', 'Fazer 600'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
                 const keithRobBikes = ['DT125R'];
@@ -1418,7 +1465,8 @@
         const imageContain = [
             "images/keith/gsx400-1.jpg",
             "images/keith/gsx400-2.jpg",
-            "images/keith/gsx400-3.jpg"
+            "images/keith/gsx400-3.jpg",
+            "images/rob/aprilia-rs250.jpg"
         ];
 
         // Images that need scale transform (partial zoom out)
@@ -1592,7 +1640,7 @@
                 modelSelect.value = randomModel;
                 modelSelect.classList.remove('keith-bike', 'rob-bike', 'joolz-bike', 'keith-joolz-bike', 'keith-rob-bike');
                 const keithBikes = ['Z1000 J3 (1984)', 'CX 500 Eurosport', 'GSX 400', 'VFR750', 'GS 550', 'Marauder 800', '150 Cadet', 'Bandit 1200 (1996)', 'Kingswood Wagon', 'Click 125i'];
-                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600'];
+                const robBikes = ['MT-10 (2018)', '1190 Adventure (2013)', 'MT5', 'RXS100', 'KR1', 'KH250', 'KH400', 'Z750', 'CB250 Superdream', 'CG125', 'RS250 Reggiani Replica', 'RG400 Gamma', 'RG500 Gamma', 'TL1000S', 'DR350S', 'CB1000F', 'CB900F Hornet', 'KLX650', '1098S', 'S1000RR (2011)', 'S1000XR', 'F800S', '350 EXC-F (2014)', 'River 600', 'Fazer 600'];
                 const joolzBikes = ['CBR1100XX Super Blackbird', 'CX 650 Eurosport', 'Tiger 900 (1995)', 'CZ 175', 'Maxi'];
                 const keithJoolzBikes = ['CB100N'];
                 const keithRobBikes = ['DT125R'];
